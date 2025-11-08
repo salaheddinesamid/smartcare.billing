@@ -1,5 +1,6 @@
 package com.healthcare.billing_service.controller;
 
+import com.healthcare.billing_service.dto.InvoicePaymentResponse;
 import com.healthcare.billing_service.dto.NewInvoiceDto;
 import com.healthcare.billing_service.dto.NewInvoiceResponseDto;
 import com.healthcare.billing_service.service.implementation.BillingServiceImpl;
@@ -30,6 +31,15 @@ public class BillingController {
         return ResponseEntity
                 .status(200)
                 .body(newInvoice);
+    }
+
+    @PutMapping("pay")
+    public ResponseEntity<?> payInvoice(@RequestParam Long invoiceId){
+        InvoicePaymentResponse response = billingService.payInvoice(invoiceId);
+
+        return ResponseEntity
+                .status(200)
+                .body(response);
     }
 
 }

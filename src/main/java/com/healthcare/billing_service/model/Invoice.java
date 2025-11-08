@@ -21,11 +21,17 @@ public class Invoice {
     @Column(name = "patient_id")
     private Integer patientId;
 
+    @Column(name = "ref_number", unique = true)
+    private String refNumber;
+
     @Column(name = "issue_date")
     private LocalDateTime issueDate;
 
     @Column(name = "due_date")
     private LocalDateTime dueDate;
+
+    @Column(name = "payment_date")
+    private LocalDateTime paymentDate;
 
     @Column(name = "amount")
     private double amount;

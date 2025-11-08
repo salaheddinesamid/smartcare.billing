@@ -29,4 +29,11 @@ public class BillingServiceUnitTest {
 
     @Test
     void testGenerateInvoiceThrowAppointmentNotFound(){}
+
+
+    @Test
+    void testPayInvoiceSuccess(){}
+
+    @Test
+    void testPayInvoiceNotFound(){}
 }
