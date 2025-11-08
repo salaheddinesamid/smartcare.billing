@@ -1,33 +1,19 @@
 package com.healthcare.billing_service.exception;
 
-import com.healthcare.billing_service.dto.NewInvoiceDto;
-import com.healthcare.billing_service.dto.NewInvoiceResponseDto;
-import com.healthcare.billing_service.service.implementation.BillingServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
-@RestController
-@RequestMapping("/api/v1/billing")
-public class InvoiceExceptionController {
+import java.util.Map;
 
-    private final BillingServiceImpl billingService;
+@ControllerAdvice
+public class InvoiceExceptionController{
 
-    @Autowired
-    public InvoiceExceptionController(BillingServiceImpl billingService) {
-        this.billingService = billingService;
-    }
-
-    @PostMapping("new")
-    public ResponseEntity<?> newInvoice(@RequestParam Integer appointmentId,
-                                        @RequestParam Integer patientId, @RequestBody NewInvoiceDto requestDto){
-
-        NewInvoiceResponseDto newInvoice = billingService.generateInvoice(
-                appointmentId,patientId,requestDto
-        );
-
-        return ResponseEntity
-                .status(200)
-                .body(newInvoice);
+    @ExceptionHandler(PatientNotFoundException.class)
+    public ResponseEntity<?> handlePatientNotFound(){
+        return
+                ResponseEntity.status(404)
+                        .body(Map.of("message", "Patient not found"));
     }
 }
