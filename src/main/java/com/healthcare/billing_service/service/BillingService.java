@@ -1,5 +1,6 @@
 package com.healthcare.billing_service.service;
 
+import com.healthcare.billing_service.dto.AppointmentEvent;
 import com.healthcare.billing_service.dto.InvoicePaymentResponse;
 import com.healthcare.billing_service.dto.NewInvoiceDto;
 import com.healthcare.billing_service.dto.NewInvoiceResponseDto;
@@ -8,10 +9,10 @@ public interface BillingService {
 
     /**
      * This function is responsible for generating invoices
-     * @param appointmentId
-     * @param patientId
+     * @param event
+     * @return new invoice response details.
      */
-    NewInvoiceResponseDto generateInvoice(Integer appointmentId, Integer patientId, NewInvoiceDto requestDto);
+    NewInvoiceResponseDto generateInvoice(AppointmentEvent event);
 
     /**
      * This function handles business logic for invoice payment by patient

@@ -1,7 +1,9 @@
 package com.healthcare.billing_service.model;
 
+import com.healthcare.billing_service.utils.InvoiceRefNumberUtils;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
