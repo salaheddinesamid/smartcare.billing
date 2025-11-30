@@ -3,9 +3,6 @@ package com.healthcare.billing_service.service.implementation;
 import com.healthcare.billing_service.dto.AppointmentEvent;
 import com.healthcare.billing_service.dto.InvoicePaymentResponse;
 import com.healthcare.billing_service.dto.NewInvoiceResponseDto;
-import com.healthcare.billing_service.exception.InvoiceNotFoundException;
-import com.healthcare.billing_service.model.Invoice;
-import com.healthcare.billing_service.model.InvoiceStatus;
 import com.healthcare.billing_service.service.BillingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,19 +20,14 @@ public class BillingServiceImpl implements BillingService {
 
     @Override
     public NewInvoiceResponseDto generateInvoice(AppointmentEvent appointmentEvent) {
-        // generate the invoice:
-        Invoice newInvoice = invoiceGenerator.generate(appointmentEvent);
-        // return response object:
-        return new NewInvoiceResponseDto(
-                newInvoice
-        );
-
+        return null;
     }
 
     // This version is preliminary and will be updated with a payment gateway:
     @Override
     public InvoicePaymentResponse payInvoice(Long invoiceId) {
 
+        /*
         // Fetch the invoice:
         Invoice invoice =
                 invoiceRepository.findById(invoiceId).orElseThrow(()-> new InvoiceNotFoundException(invoiceId.toString()));
@@ -53,6 +45,10 @@ public class BillingServiceImpl implements BillingService {
         return new InvoicePaymentResponse(
                 savedInvoice
         );
+
+         */
+
+        return null;
 
     }
 
